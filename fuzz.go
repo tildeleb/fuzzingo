@@ -2,6 +2,7 @@ package fuzz
 
 import (
 	"errors"
+	//"fmt"
 	"log"
 	"math/rand"
 	"regexp/syntax"
@@ -116,10 +117,11 @@ func randRune(runes []rune) rune {
 	i := rand.Intn(npair)
 	min := int(runes[2*i])
 	max := int(runes[2*i+1])
+	//fmt.Printf("randRune min=%v, max=%v, [%c-%c]\n", min, max, runes[2*i], runes[2*i+1])
 
 	if min == max {
 		return rune(min)
 	}
-	randi := min + rand.Intn(max-min)
+	randi := min + rand.Intn(max-min+1) // leb
 	return rune(randi)
 }
